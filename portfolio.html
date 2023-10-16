@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=d, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link
+    rel="stylesheet"
+    href="assets/vendors/themify-icons/css/themify-icons.css"
+  />
+  <!-- Bootstrap + JohnDoe main styles -->
+  <link rel="stylesheet" href="assets/css/johndoe.css" />
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/54/9/common.js"
+  ></script>
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/54/9/util.js"
+  ></script>
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/54/9/map.js"
+  ></script>
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/54/9/onion.js"
+  ></script>
+  <script
+    type="text/javascript"
+    charset="UTF-8"
+    src="https://maps.googleapis.com/maps-api-v3/api/js/54/9/controls.js"
+  ></script>
+  </head>
+  <body>
+    <div class="loader-parent" id="loader">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="loader">
+                <div class="loader-inner">
+                  <div class="box"></div>
+                  <div class="box2">LOADING</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="cursor"></div>
+
+      <div id="my_page">
+          <input class="c-checkbox" type="checkbox" id="checkbox" />
+          <div class="c-formContainer">
+          <div class="text-white  py-3" style="font-size: 16px;"><a href="./index.html" style="color: inherit;">Go Back</a> </div>
+        <form class="c-form" action="">
+          <input
+            class="c-form__input"
+            placeholder="Enter Password"
+            type="password"
+            id="password-input"
+            name="password"
+            required
+          />
+          <label class="c-form__buttonLabel" for="checkbox">
+            <button class="c-form__button" id="submitButton" type="button">Send</button>
+          </label>
+          <label
+            class="c-form__toggle"
+            for="checkbox"
+            data-title="Enter Password"
+          ></label>
+        </form>
+    </div>
+    </div>
+  </body>
+</html>
+<style>
+    *{
+        margin: 0;
+    padding: 0;
+    }
+  #my_page {
+    font-size: 10px;
+    font-family: Roboto, sans-serif;
+    background-color: #088395;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    height: 100vh;
+    justify-content: center;
+    place-items: center;
+  }
+
+  .c-checkbox {
+    display: none;
+  }
+  .c-checkbox:checked + .c-formContainer .c-form {
+    width: 37.5em;
+  }
+  .c-checkbox:checked + .c-formContainer .c-form__toggle {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  .c-checkbox:checked + .c-formContainer .c-form__input,
+  .c-checkbox:checked + .c-formContainer .c-form__buttonLabel {
+    transition: 0.2s 0.1s;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+  .c-checkbox:not(:checked)
+    + .c-formContainer
+    .c-form__input:required:valid
+    ~ .c-form__toggle::before,
+  .c-checkbox:checked
+    + .c-formContainer
+    .c-form__input:required:valid
+    ~ .c-form__toggle::before {
+    content: "Wrong Password 😶";
+  }
+  .c-checkbox:not(:checked)
+    + .c-formContainer
+    .c-form__input:required:valid
+    ~ .c-form__toggle {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .c-formContainer,
+  .c-form,
+  .c-form__toggle {
+    width: 20em;
+    height: 6.25em;
+  }
+
+  .c-formContainer {
+    position: relative;
+    font-weight: 700;
+  }
+
+  .c-form,
+  .c-form__toggle {
+    position: absolute;
+    border-radius: 6.25em;
+    background-color: #ffffff;
+    transition: 0.2s;
+  }
+
+  .c-form {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.625em;
+    box-sizing: border-box;
+    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+  }
+
+  .c-form__toggle {
+    color: #088395;
+    top: 0;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .c-form__toggle::before {
+    font-size: 1.75em;
+    content: attr(data-title);
+  }
+
+  .c-form__input,
+  .c-form__button {
+    font: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5em;
+    box-sizing: border-box;
+  }
+
+  .c-form__input,
+  .c-form__buttonLabel {
+    font-size: 1.75em;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7);
+    transition: 0s;
+  }
+
+  .c-form__input {
+    color: #6ca3ab;
+    height: 100%;
+    width: 100%;
+    padding: 0 0.714em;
+  }
+  .c-form__input::placeholder {
+    color: currentColor;
+  }
+  .c-form__input:required:valid {
+    color: #088395;
+  }
+  .c-form__input:required:valid + .c-form__buttonLabel {
+    color: #ffffff;
+  }
+  .c-form__input:required:valid + .c-form__buttonLabel::before {
+    pointer-events: initial;
+  }
+
+  .c-form__buttonLabel {
+    color: #ffffff;
+    height: 100%;
+    width: auto;
+  }
+  .c-form__buttonLabel::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: pointer;
+  }
+
+  .c-form__button {
+    color: inherit;
+    padding: 0;
+    height: 100%;
+    width: 5em;
+    background-color: #088395;
+  }
+</style>
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap 3 affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Isotope  -->
+    <script src="assets/vendors/isotope/isotope.pkgd.js"></script>
+
+    <!-- Google mpas -->
+    <script
+      async=""
+      defer=""
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtme10pzgKSPeJVJrG1O3tjR6lk98o4w8&amp;callback=initMap"
+    ></script>
+
+    <!-- JohnDoe js -->
+    <script src="assets/js/johndoe.js"></script>
+    <script>
+      function downloadResumeAsPDF() {
+        const fileUrl = "./bilawal-pdf.pdf"; // Replace with the actual path to your PDF file
+        const fileName = "resume.pdf"; // Replace with the desired file name
+
+        downloadFileAsPDF(fileUrl, fileName);
+      }
+
+      function downloadFileAsPDF(fileUrl, fileName) {
+        const link = document.createElement("a");
+        link.href = fileUrl;
+        link.target = "_blank";
+        link.download = fileName;
+        link.click();
+      }
+      // Wait for the page to load
+      window.addEventListener("load", function () {
+        // Select the loader and page wrapper elements
+        var loader = document.getElementById("loader");
+        var pageWrapper = document.getElementById("my_page");
+
+        // Display the loader
+        loader.style.display = "flex";
+
+        // Hide the page content
+        pageWrapper.style.display = "none";
+
+        // Display the page content after 3 seconds (3000 milliseconds)
+        setTimeout(function () {
+          loader.style.display = "none"; // Hide the loader
+          pageWrapper.style.display = "flex"; // Show the page content
+        }, 3000);
+      });
+      const cursor = document.querySelector(".cursor");
+
+      document.addEventListener("mousemove", (e) => {
+        cursor.setAttribute(
+          "style",
+          "top: " + (e.pageY - 10) + "px; left: " + (e.pageX - 10) + "px;"
+        );
+      });
+
+      document.addEventListener("click", (e) => {
+        cursor.classList.add("expand");
+        setTimeout(() => {
+          cursor.classList.remove("expand");
+        }, 500);
+      });
+      document.addEventListener("DOMContentLoaded", function() {
+        const passwordInput = document.getElementById("password-input");
+        const submitButton = document.getElementById("submitButton");
+  
+            // submitButton.addEventListener("click", function() {
+            //     if (passwordInput.value === "Bilawal") {
+            //         hiddenHeading.style.display = "block";
+            //         console.log('Yes')
+            //     }
+            // });
+    });
+      
+    </script>
